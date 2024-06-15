@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <div class="header text-center mb-4">
+        <h1>Member Dashboard</h1>
+    </div>
+
+    <div class="row mb-4">
+        <div class="col-md-6">
+            <div class="card text-center">
+                <div class="card-body">
+                    <h2 class="card-title">Accumulated Contributions</h2>
+                    <p class="card-text">{{ member.accumulated_contributions }} GHS</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card text-center">
+                <div class="card-body">
+                    <h2 class="card-title">Total Months Contributed</h2>
+                    <p class="card-text">{{ member.contributed_months }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="loan-status card text-center mb-4">
+        <div class="card-body">
+            <h2 class="card-title">Loan Status</h2>
+            {% if member.loan_status %}
+                <p class="card-text">Status: {{ member.loan_status }}</p>
+                <p class="card-text">Progress: {{ member.loan_progress }}%</p>
+            {% else %}
+                <p class="card-text">No loan applied yet.</p>
+                <p><a href="{% url 'apply_loan' %}">Click here to apply for a loan</a></p>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="text-center">
+        <p>© 2024 Your Credit Union. All rights reserved.</p>
+    </div>
+</div>
+{% endblock %}
